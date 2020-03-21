@@ -1,0 +1,107 @@
+## import required libraries
+import pandas as pd
+import numpy as np
+import seaborn as sns  ## visulasiation
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+## load and read the dataset in python
+data = pd.read_csv("data.csv")
+
+## to display top 5 rows of the data
+data.head()
+
+## to display down 5 rows of the data
+data.tail()
+
+## checking the data types
+data.dtypes
+
+## droping irrelavant columns
+data = data.drop(['colname','colname',...])
+data.head()
+
+## renaming the column names  --> to improve readability of the dataset
+data = data.rename(columns={"colname1":"col_name1","colname2":"col_name2",...})
+
+## removing duplicated rows from the data
+ duplicate_rows_data = data[data.duplicated()]
+ print("number of duplicate rows:", duplicate_rows_data.shape)
+ # used count no of rows in the data
+ data.count()
+ # drop the duplicates
+ data = data.drop_duplicates()
+ data.head()
+ # use count to check the no of rows after removing duplicated
+ data.count()
+
+## removing missing values or null values
+ # find the null values
+ print(data.isnull().sum())
+ # droping missing values
+ data.dropna()
+ data.count()
+ ##impute missing values 
+ # mark zero values as missing or NaN
+ data = dataset[['colname']].replace(0, numpy.NaN)
+
+ # count the number of NaN values in each column
+ print(data.isnull().sum())
+
+ # drop rows with missing values
+ data.dropna(inplace=True)
+
+ # fill missing values with mean column values
+ data.fillna(dataset.mean(), inplace=True)
+
+ from sklearn.impute import SimpleImputer
+
+ imp = SimpleImputer(strategy="mean")           ## for numeric type of data
+ print(imp.fit_transform(data))
+
+ imp = SimpleImputer(strategy="most_frequent")   ## for categorical type of data
+ print(imp.fit_transform(data))
+
+## detecting outliers
+sns.boxplot(x=data['colname'])           # displays a single horizontal boxplot 
+sns.boxplot(x=data['colname2'])
+ 
+ #detecting outliers using IQR score
+ Q1 = data.quantile(0.25)
+ Q3 = data.quantile(0.75)
+ IQR = Q3 - Q1
+ print(IQR)            ## we get IQR for each column
+
+ print(data < (Q1 - 1.5 * IQR)) |(data > (Q3 + 1.5 * IQR)) ##will give an output with some true and false values, true--> presence of outlier
+
+ # treating outliers 
+ data = data[~((data < (Q1–1.5 * IQR)) |(data > (Q3 + 1.5 * IQR))).any(axis=1)]  ## removes outliers from the data
+
+## plotting 
+ # heat map
+  # Finding the relations between the variables.
+  plt.figure(figsize=(20,10))
+  c= data.corr()
+  sns.heatmap(c,cmap="BrBG",annot=True)
+  c
+
+ # scatter plot
+ fig, ax = plt.subplots(figsize=(10,6))
+ ax.scatter(data['colname'], df['colname'])
+ ax.set_xlabel('colname')
+ ax.set_ylabel('colname')
+ plt.show()
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
