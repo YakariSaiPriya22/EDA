@@ -75,7 +75,7 @@ sns.boxplot(x=data['colname2'])
  print(data < (Q1 - 1.5 * IQR)) |(data > (Q3 + 1.5 * IQR)) ##will give an output with some true and false values, true--> presence of outlier
 
  # treating outliers 
- data = data[~((data < (Q1–1.5 * IQR)) |(data > (Q3 + 1.5 * IQR))).any(axis=1)]  ## removes outliers from the data
+ car_pred = car_pred[~((car_pred < (Q1 - 1.5 * IQR)) |(car_pred > (Q3 + 1.5 * IQR))).any(axis=1)]   ## removes outliers from the data
 
 ## plotting 
  # heat map
