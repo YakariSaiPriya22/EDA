@@ -43,7 +43,7 @@ data = data.rename(columns={"colname1":"col_name1","colname2":"col_name2",...})
  data.count()
  ##impute missing values 
  # mark zero values as missing or NaN
- data = dataset[['colname']].replace(0, numpy.NaN)
+ dataset[['colname']].replace(0, numpy.NaN)
 
  # count the number of NaN values in each column
  print(data.isnull().sum())
